@@ -5,15 +5,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c88a76da-add1-4e1d-a160-1d87dd7ac212" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/DriveFast.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/DriveSlow.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/Game.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/Road.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/hedgehog-a-2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/HedgehogGame/hedgehog-b-2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Frogger/HedgehogApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/DrivingBehaviour.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HedgehogGame/DrivingBehaviour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Hedgehog.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/HedgehogGame/Hedgehog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Car.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/DriveFast.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/DriveSlow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/DrivingBehaviour.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Game.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Hedgehog.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Road.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Road.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Truck.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/Vehicle.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/hedgehog-a-2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/HedgehogGame/hedgehog-b-2.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +60,12 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.FroggerApp.executor": "Run",
+    "Application.Game.executor": "Run",
+    "Application.HedgehogApp.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/rasmushvassolesen/Documents/JavaProjects/Mini-project/src/HedgehogGame",
@@ -93,7 +102,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710837648381</updated>
-      <workItem from="1713248743631" duration="2861000" />
+      <workItem from="1713248743631" duration="11927000" />
     </task>
     <servers />
   </component>
