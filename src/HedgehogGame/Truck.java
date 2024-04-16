@@ -1,4 +1,4 @@
 package HedgehogGame;
 
-public class Truck extends Veichle {
+public class Truck extends Vehicle {
 }

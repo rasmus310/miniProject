@@ -1,4 +1,4 @@
 package HedgehogGame;
 
-public class Veichle {
+public class Vehicle {
 }

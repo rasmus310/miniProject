@@ -1,4 +1,5 @@
 package HedgehogGame;
 
-public class DrivingBehaviour {
+public interface DrivingBehaviour {
+    public void drive();
 }
