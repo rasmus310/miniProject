@@ -4,7 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c88a76da-add1-4e1d-a160-1d87dd7ac212" name="Changes" comment="" />
+    <list default="true" id="c88a76da-add1-4e1d-a160-1d87dd7ac212" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Frogger/Enemy.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Frogger/Vehicle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frogger/Car.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frogger/Car.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frogger/HedgehogApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frogger/HedgehogApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Frogger/Truck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Frogger/Truck.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,6 +77,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/HedgehogGame" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/Frogger" />
+    </key>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -87,7 +97,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710837648381</updated>
-      <workItem from="1713248743631" duration="12423000" />
+      <workItem from="1713248743631" duration="17585000" />
     </task>
     <servers />
   </component>

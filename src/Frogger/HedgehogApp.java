@@ -21,7 +21,7 @@ import java.util.List;
 public class HedgehogApp extends Application {
     private AnimationTimer timer;
     private Pane root;
-    private List<Node> cars = new ArrayList<Node>();
+    private List<Vehicle> vehicles = new ArrayList<>();
     private Node hedgehog;
 
     private Parent HedgehogApp() {
@@ -52,27 +52,34 @@ public class HedgehogApp extends Application {
      * @return a new car
      * Spawns the car at a random position on the road
      */
-    private Node spawnCar() {
-        Rectangle car = new Rectangle(40, 40, Color.RED);
-        car.setTranslateY((int) (Math.random() * 14) * 40);
-        root.getChildren().add(car);
-
-        return car;
+    private Vehicle spawnVehicle(String type) {
+        if (type.equals("Car")){
+            return new Car(root);
+        }
+        else if (type.equals("Truck")){
+            return new Truck(root);
+        } else{
+            return null;
+        }
     }
 
     private void onUpdate() {
-        for (Node car : cars)
-            car.setTranslateX(car.getTranslateX() + Math.random() * 10);
+        for (Vehicle vehicle : vehicles)
+            vehicle.getVehicleImage().setTranslateX(vehicle.getVehicleImage().getTranslateX() + vehicle.getSpeed());
 
         if (Math.random() < 0.075) {
-            cars.add(spawnCar());
+            if (Math.random() < 0.5){
+            vehicles.add(spawnVehicle("Car"));
+        } else {
+            vehicles.add(spawnVehicle("Truck"));
         }
         checkState();
     }
+    }
 
     private void checkState() {
-        for (Node car : cars) {
-            if (car.getBoundsInParent().intersects(hedgehog.getBoundsInParent())) {
+        for (Vehicle vehicle : vehicles) {
+            if (vehicle.getVehicleImage().getBoundsInParent().intersects(hedgehog.getBoundsInParent())) {
                 hedgehog.setTranslateX(0);
                 hedgehog.setTranslateY(600 - 39);
                 return;
