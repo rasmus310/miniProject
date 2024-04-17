@@ -1,4 +1,4 @@
-package Frogger;
+package MiniProject;
 
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
@@ -53,12 +53,11 @@ public class HedgehogApp extends Application {
      * Spawns the car at a random position on the road
      */
     private Vehicle spawnVehicle(String type) {
-        if (type.equals("Car")){
+        if (type.equals("Car")) {
             return new Car(root);
-        }
-        else if (type.equals("Truck")){
+        } else if (type.equals("Truck")) {
             return new Truck(root);
-        } else{
+        } else {
             return null;
         }
     }
@@ -68,13 +67,13 @@ public class HedgehogApp extends Application {
             vehicle.getVehicleImage().setTranslateX(vehicle.getVehicleImage().getTranslateX() + vehicle.getSpeed());
 
         if (Math.random() < 0.075) {
-            if (Math.random() < 0.5){
-            vehicles.add(spawnVehicle("Car"));
-        } else {
-            vehicles.add(spawnVehicle("Truck"));
+            if (Math.random() < 0.5) {
+                vehicles.add(spawnVehicle("Car"));
+            } else {
+                vehicles.add(spawnVehicle("Truck"));
+            }
+            checkState();
         }
-        checkState();
-    }
     }
 
     private void checkState() {
@@ -86,7 +85,7 @@ public class HedgehogApp extends Application {
             }
         }
 
-        if (hedgehog.getTranslateY() <= 0){
+        if (hedgehog.getTranslateY() <= 0) {
             timer.stop();
             String win = "You win!";
             HBox hbox = new HBox();
@@ -110,13 +109,14 @@ public class HedgehogApp extends Application {
                 ft.setDelay(Duration.seconds(i * 0.15));
                 ft.play();
             }
+        }
     }
-}
-@Override
-public void start(Stage primaryStage) {
-    primaryStage.setScene(new Scene(HedgehogApp()));
-        primaryStage.getScene().setOnKeyPressed(e ->{
-            switch(e.getCode()){
+
+    @Override
+    public void start(Stage primaryStage) {
+        primaryStage.setScene(new Scene(HedgehogApp()));
+        primaryStage.getScene().setOnKeyPressed(e -> {
+            switch (e.getCode()) {
                 case UP:
                     hedgehog.setTranslateY(hedgehog.getTranslateY() - 40);
                     break;
@@ -133,8 +133,8 @@ public void start(Stage primaryStage) {
         });
 
 
-primaryStage.show();
-}
+        primaryStage.show();
+    }
 
     public static void main(String[] args) {
         launch(args);
