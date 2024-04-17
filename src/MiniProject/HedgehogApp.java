@@ -35,7 +35,7 @@ public class HedgehogApp extends Application {
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                onUpdate();
+                    onUpdate();
             }
         };
         timer.start();

@@ -8,7 +8,7 @@ public class Truck extends Vehicle{
     private ImageView truck;
 
     public Truck(Pane root) {
-        super(root, "file:src/Frogger/EnemyTruck.png");
+        super(root, "file:src/MiniProject/EnemyTruck.png");
 
         double minSpeed = 2.0;
         double maxSpeed = 5.0;
