@@ -22,15 +22,16 @@ public class HedgehogApp extends Application {
     private AnimationTimer timer;
     private Pane root;
     private List<Vehicle> vehicles = new ArrayList<>();
-    private Node hedgehog;
+    private Hedgehog hedgehog;
+    private int lives = 3;
 
     private Parent HedgehogApp() {
         root = new Pane();
         root.setPrefSize(800, 600);
 
-        hedgehog = initHedgehog();
+        hedgehog = new Hedgehog();
 
-        root.getChildren().add(hedgehog);
+        root.getChildren().add(hedgehog.getHedgehog());
 
         timer = new AnimationTimer() {
             @Override
@@ -62,6 +63,11 @@ public class HedgehogApp extends Application {
         }
     }
 
+    /**
+     * Moves the vehicles and checks if the hedgehog has collided with a vehicle
+     * spawns a new vehicle with a 7.5% chance every frame
+     * determines if vehicle is a car or truck with a 50% chance
+     */
     private void onUpdate() {
         for (Vehicle vehicle : vehicles)
             vehicle.getVehicleImage().setTranslateX(vehicle.getVehicleImage().getTranslateX() + vehicle.getSpeed());
@@ -76,16 +82,21 @@ public class HedgehogApp extends Application {
         }
     }
 
+    /**
+     * Checks if the hedgehog has collided with a vehicle
+     *
+     */
     private void checkState() {
         for (Vehicle vehicle : vehicles) {
-            if (vehicle.getVehicleImage().getBoundsInParent().intersects(hedgehog.getBoundsInParent())) {
-                hedgehog.setTranslateX(0);
-                hedgehog.setTranslateY(600 - 39);
+            if (vehicle.getVehicleImage().getBoundsInParent().intersects(hedgehog.getHedgehog().getBoundsInParent())) {
+                hedgehog.getHedgehog().setTranslateX(0);
+                hedgehog.getHedgehog().setTranslateY(600 - 39);
+                lives--;
                 return;
             }
         }
 
-        if (hedgehog.getTranslateY() <= 0) {
+        if (hedgehog.getHedgehog().getTranslateY() <= 0) {
             timer.stop();
             String win = "You win!";
             HBox hbox = new HBox();
@@ -118,16 +129,16 @@ public class HedgehogApp extends Application {
         primaryStage.getScene().setOnKeyPressed(e -> {
             switch (e.getCode()) {
                 case UP:
-                    hedgehog.setTranslateY(hedgehog.getTranslateY() - 40);
+                    hedgehog.moveHedgehog(0, -40);
                     break;
                 case DOWN:
-                    hedgehog.setTranslateY(hedgehog.getTranslateY() + 40);
+                    hedgehog.moveHedgehog(0, 40);
                     break;
                 case LEFT:
-                    hedgehog.setTranslateX(hedgehog.getTranslateX() - 40);
+                    hedgehog.moveHedgehog(-40, 0);
                     break;
                 case RIGHT:
-                    hedgehog.setTranslateX(hedgehog.getTranslateX() + 40);
+                    hedgehog.moveHedgehog(40, 0);
                     break;
             }
         });

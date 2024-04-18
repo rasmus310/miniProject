@@ -8,6 +8,11 @@ public abstract class Vehicle implements DrivingBehaviour{
     protected double speed;
     protected ImageView vehicleImage;
 
+    /**
+     * @param root
+     * @param imagePath
+     * Spawns the vehicle at a random position on the road, but not on the lowest "edge"
+     */
     public Vehicle(Pane root, String imagePath){
         Image image = new Image(imagePath);
         this.vehicleImage = new ImageView(image);
@@ -21,6 +26,10 @@ public abstract class Vehicle implements DrivingBehaviour{
         return this.vehicleImage;
     }
 
+    /**
+     * @param speed
+     * Sets the speed of the vehicle
+     */
     @Override
     public void setSpeed(double speed) {
         this.speed = speed;
