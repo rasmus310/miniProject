@@ -18,6 +18,7 @@ public class Truck extends Vehicle{
         double maxSpeed = 5.0;
         this.speed = minSpeed + Math.random() * (maxSpeed - minSpeed); // initial speed
     }
+
     @Override
     public double getSpeed() {
         return this.speed;

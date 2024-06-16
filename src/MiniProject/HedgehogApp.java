@@ -3,13 +3,13 @@ package MiniProject;
 import javafx.animation.AnimationTimer;
 import javafx.animation.FadeTransition;
 import javafx.application.Application;
-import javafx.scene.Node;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -31,26 +31,32 @@ public class HedgehogApp extends Application {
 
         hedgehog = new Hedgehog();
 
-        root.getChildren().add(hedgehog.getHedgehog());
 
         timer = new AnimationTimer() {
             @Override
             public void handle(long now) {
-                    onUpdate();
+                onUpdate();
             }
         };
-        timer.start();
+        // Start Button and removes it once the button has been pressed
+        Button startButton = new Button("Start");
+        startButton.setTranslateX(350);
+        startButton.setTranslateY(300);
+        startButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                timer.start();
+                root.getChildren().remove(startButton);
+                root.getChildren().add(hedgehog.getHedgehog());
+            }
+        });
+
+        root.getChildren().add(startButton);
         return root;
     }
 
-    private Node initHedgehog() {
-        Rectangle hedgehog = new Rectangle(38, 38, Color.BROWN);
-        hedgehog.setTranslateY(600 - 39);
-        return hedgehog;
-    }
-
     /**
-     * @return a new car
+     * @return a new vehicle
      * Spawns the car at a random position on the road
      */
     private Vehicle spawnVehicle(String type) {
@@ -65,7 +71,7 @@ public class HedgehogApp extends Application {
 
     /**
      * Moves the vehicles and checks if the hedgehog has collided with a vehicle
-     * spawns a new vehicle with a 7.5% chance every frame
+     * spawns a new vehicle with a 7% chance every frame
      * determines if vehicle is a car or truck with a 50% chance
      */
     private void onUpdate() {
@@ -84,7 +90,10 @@ public class HedgehogApp extends Application {
 
     /**
      * Checks if the hedgehog has collided with a vehicle
-     *
+     * If the hedgehog has collided with a vehicle, the hedgehog is moved to the starting position and looses a life
+     * if lives = 0 the game is over
+     * if the hedgehog reaches the top of the screen the game is won
+     * This method was created with the help of the CO-pilot
      */
     private void checkState() {
         for (Vehicle vehicle : vehicles) {
@@ -96,11 +105,51 @@ public class HedgehogApp extends Application {
             }
         }
 
+        if (lives == 0){
+            timer.stop();
+            String lose = "You lose!";
+            HBox hbox = new HBox();
+            hbox.setTranslateX(325);
+            hbox.setTranslateY(250);
+
+            root.getChildren().add(hbox);
+
+
+            for (int i = 0; i < lose.length(); i++) {
+                char c = lose.charAt(i);
+
+                Text text = new Text(String.valueOf(c));
+                text.setFont(Font.font(48));
+                text.setOpacity(0);
+                hbox.getChildren().add(text);
+
+                FadeTransition ft = new FadeTransition(Duration.seconds(0.66), text);
+                ft.setToValue(1);
+                ft.setDelay(Duration.seconds(i * 0.15));
+                ft.play();
+
+                Button restartButton = new Button("Restart");
+                restartButton.setTranslateX(350);
+                restartButton.setTranslateY(300);
+                root.getChildren().add(restartButton);
+                restartButton.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        root.getChildren().remove(hbox);
+                        root.getChildren().remove(restartButton);
+                        restartGame();
+                    }
+                });
+            }
+
+            root.getChildren().remove(hedgehog.getHedgehog());
+        }
+
         if (hedgehog.getHedgehog().getTranslateY() <= 0) {
             timer.stop();
             String win = "You win!";
             HBox hbox = new HBox();
-            hbox.setTranslateX(350);
+            hbox.setTranslateX(325);
             hbox.setTranslateY(250);
 
 
@@ -123,6 +172,7 @@ public class HedgehogApp extends Application {
         }
     }
 
+
     @Override
     public void start(Stage primaryStage) {
         primaryStage.setScene(new Scene(HedgehogApp()));
@@ -141,11 +191,30 @@ public class HedgehogApp extends Application {
                     hedgehog.moveHedgehog(40, 0);
                     break;
             }
+
         });
-
-
         primaryStage.show();
     }
+
+    private void restartGame() {
+        lives = 3;
+
+        for (Vehicle vehicle : vehicles) {
+            root.getChildren().remove(vehicle.getVehicleImage());
+        }
+        vehicles.clear();
+        //
+        root.getChildren().add(hedgehog.getHedgehog());
+        hedgehog.getHedgehog().setTranslateX(0);
+        hedgehog.getHedgehog().setTranslateY(600 - 39);
+        //
+
+        //
+        timer.start();
+    }
+
+
+
 
     public static void main(String[] args) {
         launch(args);

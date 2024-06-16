@@ -7,7 +7,7 @@ import javafx.scene.shape.Rectangle;
 
 public class Hedgehog {
     private Node hedgehog;
-    private ImageView hedgehog;
+    //private ImageView hedgehog;
 
     public Hedgehog() {
         this.hedgehog = initHedgehog();

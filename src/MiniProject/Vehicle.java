@@ -5,8 +5,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 
 public abstract class Vehicle implements DrivingBehaviour{
-    protected double speed;
-    protected ImageView vehicleImage;
+    private double speed;
+    private ImageView vehicleImage;
 
     /**
      * @param root
@@ -35,6 +35,10 @@ public abstract class Vehicle implements DrivingBehaviour{
         this.speed = speed;
     }
 
+    /**
+     * @return the speed of the vehicle
+     * Gets the speed of the vehicle from
+     */
     public double getSpeed() {
         return speed;
     }
